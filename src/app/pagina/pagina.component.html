@@ -1,0 +1,48 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar class="example-toolbar">
+        <div class="col-4 form-inline">
+            <button mat-icon-button (click)="snav.toggle()" class="ml-a">
+        <mat-icon class="icone-topo">menu</mat-icon>
+      </button>
+            <h1 class="example-app-name mr-a">Pic Pet</h1>
+        </div>
+
+        <div class="input-group ml-a mr-a">
+            <div class="input-group-prepend">
+                <span class="input-group-text" style="border-right: none;" id="basic-addon1">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </span>
+            </div>
+            <input type="text" class="form-control text-left" style="background-color: #e9ecef; border-left: none;" placeholder="Buscar" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="col-4 form-inline">
+            <a class="ml-a mr-5" mdbTooltip="Mensagens" placement="bottom">
+                <i class="fa fa-comment-o" aria-hidden="true"></i>
+            </a>
+
+            <a class="mr-5" mdbTooltip="Notificações" placement="bottom">
+                <i class="fa fa-heart-o"></i>
+            </a>
+
+            <a class="mr-a" mdbTooltip="Perfil" placement="bottom" [routerLink]="'perfil'">
+                <i class="fa fa-paw" aria-hidden="true"></i>
+            </a>
+        </div>
+
+    </mat-toolbar>
+
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+            <mat-nav-list>
+                <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a>
+            </mat-nav-list>
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+
+
+    </mat-sidenav-container>
+</div>
